@@ -278,6 +278,7 @@
                   <?php if($this->session->userdata('id_level')!= NULL && $this->session->userdata('id_level') == 1): ?>
                   <?=$this->session->userdata('nama_admin')?> - Administrator
                   <?php elseif($this->session->userdata('id_level')!= NULL && $this->session->userdata('id_level') == 2): ?>
+
                   <?=$this->session->userdata('nama_admin')?> - Bank
                   <?php else: ?>
                   <?=$this->session->userdata('nama_pelanggan')?> - Pelanggan
@@ -388,7 +389,12 @@
         </li>
           <?php elseif($this->session->userdata('id_level')== 2): ?>
 
-
+              <li>
+          <a href="<?=base_url()?>admin_home/penggunaan_listrik">
+            <i class="fa fa-dollar"></i>
+            Penggunaan Listrik
+          </a>
+           </li>
 
           <?php else: ?>
           <a href="<?=base_url()?>admin_home/tarif">

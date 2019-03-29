@@ -90,6 +90,14 @@ class admin_home extends CI_Controller {
     }
 
 
+    public function penggunaan_listrik()
+    {
+        $data['DataPelanggan'] = $this->admin->getDataPelanggan();
+        $data['DataTarif'] = $this->admin->getDataTarif();
+        $data['judul'] = "PPOB | Halaman Penggunaan Listrik";
+        $data['konten'] = "admin/v_penggunaan_listrik";
+        $this->load->view('v_template', $data);
+    }
 
 }
 
