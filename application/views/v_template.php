@@ -431,6 +431,14 @@
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="home">
+            <i class="fa fa-history"></i>
+            <span>Riwayat</span>
+          </a>
+        </i>
+
           <?php endif ?>
 
 
