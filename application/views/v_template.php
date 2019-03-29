@@ -369,7 +369,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="<?=base_url()?>home"><i class="fa fa-circle-o"></i> Penggunaan</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Tagihan</a></li>
+            <li><a href="<?=base_url('admin_home/get_detail_tagihan')?>"><i class="fa fa-circle-o"></i>Tagihan</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -389,6 +389,7 @@
         </li>
           <?php elseif($this->session->userdata('id_level')== 2): ?>
 
+<<<<<<< HEAD
               <li>
           <a href="<?=base_url()?>admin_home/penggunaan_listrik">
             <i class="fa fa-dollar"></i>
@@ -396,6 +397,8 @@
           </a>
            </li>
 
+=======
+>>>>>>> 7a08cfc3b6cc6be687a32d02c84d2e8b6c69a7b6
           <?php else: ?>
           <a href="<?=base_url()?>admin_home/tarif">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -407,7 +410,6 @@
             <i class="fa fa-dollar"></i>
             Tarif
           </a>
-
         </li>
 
         <li>
@@ -417,8 +419,8 @@
           </a>
         </i>
 
-        <li class="treeview">
-          <a href="home">
+        <li>
+          <a href="<?=base_url()?>admin_home/tagihan">
             <i class="fa fa-address-book"></i>
             <span>Tagihan</span>
           </a>
@@ -437,6 +439,14 @@
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
         </li>
+
+        <li>
+          <a href="<?=base_url()?>admin_home/riwayat">
+            <i class="fa fa-history"></i>
+            Riwayat
+          </a>
+        </li>
+
           <?php endif ?>
 
 

@@ -144,7 +144,38 @@ class M_admin extends CI_Model {
                     ->update('pelanggan', $data);
     }
 
+<<<<<<< HEAD
+    public function getDataTagihan()
+    {
+        $this->db->select('*');
+        $this->db->from('tagihan');
+        $this->db->join('penggunaan','penggunaan.id_penggunaan=tagihan.id_penggunaan');
+        return $this->db->get()->result();
+    }
+=======
+    public function getDataRiwayat()
+    {
+        
+        $this->db->select('
+            pelanggan.nomor_kwh,
+            pelanggan.nama_pelanggan,
+            pembayaran.tanggal_pembayaran,
+            pembayaran.bulan_bayar,
+            pembayaran.biaya_admin,
+            pembayaran.total_bayar,
+            pembayaran.status,
+            pembayaran.bukti,
+            admin.nama_admin');
+        $this->db->from('pembayaran');
+        $this->db->join('admin','admin.id_admin=pembayaran.id_admin');
+        $this->db->join('tagihan','tagihan.id_tagihan=pembayaran.id_tagihan');
+        $this->db->join('penggunaan','penggunaan.id_penggunaan=tagihan.id_penggunaan');
+        $this->db->join('pelanggan','pelanggan.id_pelanggan=penggunaan.id_pelanggan');
+        return $this->db->get()->result();
+    }
 
+
+>>>>>>> 4c1325a45434896a1fd282be446bcca53c1e2de7
 
 }
 
