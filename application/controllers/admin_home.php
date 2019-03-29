@@ -28,37 +28,37 @@ class admin_home extends CI_Controller {
         }
     }
 
-    public function data_tarif($id){
-		$data=$this->admin->data_tarif($id);
-		echo json_encode($data);
+		    public function data_tarif($id){
+				$data=$this->admin->data_tarif($id);
+				echo json_encode($data);
     }
 
     public function hapus_tarif()
     {
         $this->admin->hapus_tarif();
-		$this->session->set_flashdata('pesan_sukses', 'Sukses Menghapus Tarif');
-		redirect('admin_home/tarif');
+				$this->session->set_flashdata('pesan_sukses', 'Sukses Menghapus Tarif');
+				redirect('admin_home/tarif');
     }
 
     public function aktif_tarif()
     {
-        $this->admin->aktif_tarif();
-		$this->session->set_flashdata('pesan_sukses', 'Sukses Mengaktifkan Tarif');
-		redirect('admin_home/tarif');
+      $this->admin->aktif_tarif();
+			$this->session->set_flashdata('pesan_sukses', 'Sukses Mengaktifkan Tarif');
+			redirect('admin_home/tarif');
     }
 
     public function nonaktif_tarif()
     {
         $this->admin->nonaktif_tarif();
-		$this->session->set_flashdata('pesan_sukses', 'Sukses Menonaktifkan Tarif');
-		redirect('admin_home/tarif');
+				$this->session->set_flashdata('pesan_sukses', 'Sukses Menonaktifkan Tarif');
+				redirect('admin_home/tarif');
     }
 
     public function edit_tarif()
     {
         $this->admin->edit_tarif();
-		$this->session->set_flashdata('pesan_sukses', 'Sukses Mengedit Data Tarif');
-		redirect('admin_home/tarif');
+				$this->session->set_flashdata('pesan_sukses', 'Sukses Mengedit Data Tarif');
+				redirect('admin_home/tarif');
     }
 
 
@@ -67,26 +67,26 @@ class admin_home extends CI_Controller {
         $data['DataPelanggan'] = $this->admin->getDataPelanggan();
         $data['DataTarif'] = $this->admin->getDataTarif();
         $data['judul'] = "PPOB | Halaman Data Pelanggan";
-		$data['konten'] = "admin/v_pelanggan";
-		$this->load->view('v_template', $data);
+				$data['konten'] = "admin/v_pelanggan";
+				$this->load->view('v_template', $data);
     }
 
-    public function data_pelanggan($id){
-		$data=$this->admin->data_pelanggan($id);
-		echo json_encode($data);
+		    public function data_pelanggan($id){
+				$data=$this->admin->data_pelanggan($id);
+				echo json_encode($data);
     }
 
     public function tambah_pelanggan(){
-		$data=$this->admin->tambah_pelanggan();
-        $this->session->set_flashdata('pesan_sukses', 'Sukses Menambahkan Data Pelanggan');
-		redirect('admin_home/pelanggan');
+				$data=$this->admin->tambah_pelanggan();
+		    $this->session->set_flashdata('pesan_sukses', 'Sukses Menambahkan Data Pelanggan');
+				redirect('admin_home/pelanggan');
     }
 
     public function edit_pelanggan()
     {
-        $this->admin->edit_pelanggan();
-		$this->session->set_flashdata('pesan_sukses', 'Sukses Mengedit Data Pelanggan');
-		redirect('admin_home/pelanggan');
+      $this->admin->edit_pelanggan();
+			$this->session->set_flashdata('pesan_sukses', 'Sukses Mengedit Data Pelanggan');
+			redirect('admin_home/pelanggan');
     }
 
 
