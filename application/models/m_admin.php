@@ -144,6 +144,14 @@ class M_admin extends CI_Model {
                     ->update('pelanggan', $data);
     }
 
+    public function getDataRiwayat()
+    {
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        $this->db->join('tarif','tarif.id_tarif=pelanggan.id_tarif');
+        return $this->db->get()->result();
+    }
+
 
 
 }

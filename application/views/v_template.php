@@ -401,7 +401,6 @@
             <i class="fa fa-dollar"></i>
             Tarif
           </a>
-
         </li>
 
         <li>
@@ -432,12 +431,12 @@
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="home">
+        <li>
+          <a href="<?=base_url()?>admin_home/riwayat">
             <i class="fa fa-history"></i>
-            <span>Riwayat</span>
+            Riwayat
           </a>
-        </i>
+        </li>
 
           <?php endif ?>
 

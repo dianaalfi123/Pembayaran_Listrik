@@ -28,7 +28,7 @@ class admin_home extends CI_Controller {
         }
     }
 
-		    public function data_tarif($id){
+    public function data_tarif($id){
 				$data=$this->admin->data_tarif($id);
 				echo json_encode($data);
     }
@@ -65,7 +65,6 @@ class admin_home extends CI_Controller {
     public function pelanggan()
     {
         $data['DataPelanggan'] = $this->admin->getDataPelanggan();
-        $data['DataTarif'] = $this->admin->getDataTarif();
         $data['judul'] = "PPOB | Halaman Data Pelanggan";
 				$data['konten'] = "admin/v_pelanggan";
 				$this->load->view('v_template', $data);
@@ -87,6 +86,14 @@ class admin_home extends CI_Controller {
       $this->admin->edit_pelanggan();
 			$this->session->set_flashdata('pesan_sukses', 'Sukses Mengedit Data Pelanggan');
 			redirect('admin_home/pelanggan');
+    }
+
+    public function  riwayat()
+    {
+        $data['DataRiwayat'] = $this->admin->getDataRiwayat();
+        $data['judul'] = "PPOB | Halaman Data Riwayat";
+                $data['konten'] = "admin/v_riwayat";
+                $this->load->view('v_template', $data);
     }
 
 
