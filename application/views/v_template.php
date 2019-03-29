@@ -399,7 +399,6 @@
             <i class="fa fa-dollar"></i>
             Tarif
           </a>
-
         </li>
 
         <li>
@@ -429,6 +428,14 @@
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
         </li>
+
+        <li>
+          <a href="<?=base_url()?>admin_home/riwayat">
+            <i class="fa fa-history"></i>
+            Riwayat
+          </a>
+        </li>
+
           <?php endif ?>
 
 
