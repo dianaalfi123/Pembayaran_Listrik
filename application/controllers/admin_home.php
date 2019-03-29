@@ -15,7 +15,7 @@ class admin_home extends CI_Controller {
     {
         $data['DataTarif'] = $this->admin->getDataTarif();
         $data['judul'] = "PPOB | Halaman Tarif";
-				$data['konten'] = "admin/va_tarif";
+				$data['konten'] = "admin/v_tarif";
 				$this->load->view('v_template', $data);
     }
 
