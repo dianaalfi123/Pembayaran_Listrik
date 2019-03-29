@@ -144,7 +144,13 @@ class M_admin extends CI_Model {
                     ->update('pelanggan', $data);
     }
 
-
+    public function getDataTagihan()
+    {
+        $this->db->select('*');
+        $this->db->from('tagihan');
+        $this->db->join('penggunaan','penggunaan.id_penggunaan=tagihan.id_penggunaan');
+        return $this->db->get()->result();
+    }
 
 }
 

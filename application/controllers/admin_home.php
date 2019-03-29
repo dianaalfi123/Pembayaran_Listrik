@@ -89,7 +89,14 @@ class admin_home extends CI_Controller {
 			redirect('admin_home/pelanggan');
     }
 
-
+    public function tagihan()
+    {
+        $data['DataTagihan'] = $this->admin->getDataTagihan();
+        $data['DataTarif'] = $this->admin->getDataTarif();
+        $data['judul'] = "PPOB | Halaman Data Pelanggan";
+                $data['konten'] = "admin/v_tagihan";
+                $this->load->view('v_template', $data);
+    }
 
 }
 

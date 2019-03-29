@@ -368,7 +368,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="<?=base_url()?>home"><i class="fa fa-circle-o"></i> Penggunaan</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Tagihan</a></li>
+            <li><a href="<?=base_url('admin_home/get_detail_tagihan')?>"><i class="fa fa-circle-o"></i>Tagihan</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -387,8 +387,6 @@
           </ul>
         </li>
           <?php elseif($this->session->userdata('id_level')== 2): ?>
-
-
 
           <?php else: ?>
           <a href="<?=base_url()?>admin_home/tarif">
@@ -411,8 +409,8 @@
           </a>
         </i>
 
-        <li class="treeview">
-          <a href="home">
+        <li>
+          <a href="<?=base_url()?>admin_home/tagihan">
             <i class="fa fa-address-book"></i>
             <span>Tagihan</span>
           </a>
