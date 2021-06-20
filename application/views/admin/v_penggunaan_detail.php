@@ -14,7 +14,7 @@
 
   <div class="container-fluid">
     <h2>
-      <center><strong>Halaman Penggunaan Listrik</strong></center>
+      <center><strong>Halaman Detail Penggunaan Listrik</strong></center>
     </h2><br>
 
     <div class="box">
@@ -27,38 +27,40 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Pelanggan</th>
-              <th>Alamat</th>
-              <th>Nomor KWH</th>
-              <th>Daya</th>
+              <th>Bulan Tagihan</th>
+              <th>Tahun Tagihan</th>
+              <th>Meter Awal</th>
+              <th>Meter Akhir</th>
+              <th>Total Penggunaan</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
 
-            <?php $no=1; foreach ($DataPelanggan as $data) {  ?>
+            <?php $no=1; foreach ($DataPenggunaan as $data) {  ?>
             <tr>
               <td>
                 <?=$no++ ?>
               </td>
               <td>
-                <?=$data->nama_pelanggan ?>
+                <?=$data->bulan ?>
               </td>
               <td>
-                <?=$data->alamat ?>
+                <?=$data->tahun ?>
               </td>
               <td>
-                <?=$data->nomor_kwh?>
+                <?=$data->meter_awal ?> 
               </td>
               <td>
-                <?=$data->daya?> VA
+                <?=$data->meter_akhir ?>
               </td>
-
-
               <td>
-                <a class="btn btn-primary" data-toggle="modal" data-target="#penggunaan" href="#" onclick="edit('<?=$data->id_pelanggan?>')">Tambah Penggunaan</a>
-                <a class="btn btn-success" href="<?=base_url()?>admin_home/detail_Penggunaan/<?=$data->id_pelanggan?> ">Detail Penggunaan</a>
-                <a class="btn btn-warning" href="<?=base_url()?>admin_home/detail_tagihan/<?=$data->id_pelanggan?>">Detail Tagihan</a></td>
+                <?php $total = $data->meter_akhir - $data->meter_awal ?>
+                <?= $total ?>
+              </td>
+              <td>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#penggunaan" href="#" onclick="edit('<?=$data->id_penggunaan?>')">Edit Penggunaan</a>
+              </td>
             </tr>
             <?php } ?>
             </tfoot>
@@ -67,7 +69,7 @@
       </div>
 
 
-        <!-- Modal Tambah Tarif-->
+        <!-- Modal Edit Penggunaan -->
         <div class="modal fade" id="penggunaan" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -80,26 +82,20 @@
             <div class="modal-body">
               <br />
 
-              <form action="<?=base_url('admin_home/tambah_penggunaan')?>" method="post" class="form-horizontal form-label-left">
+              <form action="<?=base_url('admin_home/edit_penggunaan')?>" method="post" class="form-horizontal form-label-left">
 
-                <input type="hidden" id="id_pelanggan" name="id_pelanggan" required="required" class="form-control col-md-7 col-xs-12">
-
-                <div class="form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Pelanggan :
-                  </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="nama_pelanggan" name="nama_pelanggan" required="required" class="form-control col-md-7 col-xs-12" disabled>
-                  </div>
-                </div>
+                  <input type="hidden" id="id_pelanggan" name="id_pelanggan" required="required" class="form-control col-md-7 col-xs-12">
+                <input type="hidden" id="id_penggunaan" name="id_penggunaan" required="required" class="form-control col-md-7 col-xs-12">
 
                 <?php
                   $arr_bulan=array(1=>"Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
                 ?>
+
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Bulan :
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select name="bulan" class="form-control col-md-7 col-xs-12">
+                    <select id="bulan" name="bulan" class="form-control col-md-7 col-xs-12">
                             <option></option>
                             <?php foreach ($arr_bulan as $key => $bulan): ?>
                               <option value="<?=$bulan?>"><?=$bulan?></option>
@@ -111,7 +107,7 @@
                 <div class="form-group">
                   <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tahun : </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select class="form-control col-md-7 col-xs-12" name="tahun">
+                    <select id="tahun" class="form-control col-md-7 col-xs-12" name="tahun">
                       <option></option>
                       <?php
                       for($i=2019;$i<2030;$i++){
@@ -125,14 +121,14 @@
                 <div class="form-group">
                   <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Meter Awal : </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="number" name="meter_awal" required="required" class="form-control col-md-7 col-xs-12">
+                    <input type="number" name="meter_awal" id="meter_awal" required="required" class="form-control col-md-7 col-xs-12">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Meter Akhir : </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="number" name="meter_akhir" required="required" class="form-control col-md-7 col-xs-12">
+                    <input type="number" id="meter_akhir" name="meter_akhir" required="required" class="form-control col-md-7 col-xs-12">
                   </div>
                 </div>
 
@@ -151,16 +147,15 @@
         function edit(a) {
           $.ajax({
             type: "post",
-            url: "<?=base_url()?>admin_home/data_pelanggan/" + a,
+            url: "<?=base_url()?>admin_home/data_penggunaan/" + a,
             dataType: "json",
             success: function (data) {
               $("#id_pelanggan").val(data.id_pelanggan);
-              $("#nama_pelanggan").val(data.nama_pelanggan);
-              $("#username").val(data.username);
-              $("#nomor_kwh").val(data.nomor_kwh);
-              $("#alamat").val(data.alamat);
-              $("#status_pelanggan").val(data.status_pelanggan);
-              $("#nama_tarif").val(data.nama_tarif);
+              $("#id_penggunaan").val(data.id_penggunaan);
+              $("#bulan").val(data.bulan);
+              $("#tahun").val(data.tahun);
+              $("#meter_awal").val(data.meter_awal);
+              $("#meter_akhir").val(data.meter_akhir);
             }
           });
         }

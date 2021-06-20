@@ -9,14 +9,11 @@ class Admin extends CI_Controller {
         if ($this->session->userdata('login')==TRUE) {
                 redirect('home','refresh');
         }
-
     }
 
-
-
-    public function login()
+    public function login() 
 	  {
-		$this->load->view('admin/v_login');
+		    $this->load->view('admin/v_login');
     }
 
     public function proses_login(){
@@ -34,7 +31,7 @@ class Admin extends CI_Controller {
                     );
                     $this->session->set_userdata($array);
                     $this->session->set_flashdata('pesan', 'Sukses Masuk Ke Akun');
-                    redirect('home','refresh');
+                    redirect('admin_home','refresh');
                 }else{
                     $this->session->set_flashdata('pesan_gagal','Username Atau Password Yang Anda Masukkan Salah');
                     redirect('admin/login','refresh');

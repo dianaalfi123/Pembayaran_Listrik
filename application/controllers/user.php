@@ -5,16 +5,18 @@ class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('m_user','user');
+        $this->load->model('M_user','user');
         if ($this->session->userdata('login')==TRUE) {
                 redirect('home','refresh');
         }
     
     }
 
+
     public function register()
-	{
-		$this->load->view('user/v_registrasi');
+    {
+        $data['DataTarif'] = $this->user->getDataTarif();
+        $this->load->view('user/v_registrasi', $data);
 	}
 
 	public function login()
@@ -66,7 +68,8 @@ class User extends CI_Controller {
                     $array=array(
                         'login'=> TRUE,
                         'nama_pelanggan'=>$data->nama_pelanggan,
-                        'id_pelanggan'=>$data->id_pelanggan
+                        'id_pelanggan'=>$data->id_pelanggan,
+                        'id_tarif'=>$data->id_tarif
                     );
                     $this->session->set_userdata($array);
                     $this->session->set_flashdata('pesan', 'Sukses Masuk Ke Akun');

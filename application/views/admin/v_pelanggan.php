@@ -12,7 +12,7 @@
 
 <body>
 <style>
-    
+
 input[type="checkbox"], input[type="radio"]{
 	position: absolute;
 	right: 9000px;
@@ -143,7 +143,7 @@ input[type="radio"]:disabled + .label-text:before{
 							<th>Daya</th>
                             <th>Jenis Tarif</th>
 							<th>Nomor KWH</th>
-						
+
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -158,28 +158,24 @@ input[type="radio"]:disabled + .label-text:before{
 								<?=$data->nama_pelanggan ?>
 							</td>
 							<td>
-								<?=$data->username ?> 
-                            </td>
+								<?=$data->username ?>
+              </td>
 							<td>
-                                <?=$data->alamat?> 
+                <?=$data->alamat?>
 							</td>
 							<td>
-                                <?=$data->daya?> VA
+                <?=$data->daya?>
 							</td>
 							<td>
-                                <?=$data->nama_tarif?>  
+                <?=$data->nama_tarif?>
 							</td>
-                            <td>
-                                <?=$data->nomor_kwh?>  
+              <td>
+                <?=$data->nomor_kwh?>
 							</td>
 							<td>
-								<a class="btn btn-primary" data-toggle="modal" data-target="#edit" href="#" onclick="edit('<?=$data->id_pelanggan?>')"> <?=$data->id_pelanggan?> Edit</a>
+								<a class="btn btn-primary" data-toggle="modal" data-target="#edit" href="#" onclick="edit('<?=$data->id_pelanggan?>')">Edit</a>
 								<a class="btn btn-danger" data-toggle="modal" data-target="#hapus" href="#" onclick="edit('<?=$data->id_pelanggan?>')">Hapus</a>
-								<?php if($data->status_pelanggan == 'Aktif'): ?>
-								<a class="btn btn-warning" data-toggle="modal" data-target="#nonaktifkan" href="#" onclick="edit('<?=$data->id_pelanggan?>')">Non Aktifkan</a></td>
-							<?php else: ?>
-							<a class="btn btn-success" data-toggle="modal" data-target="#aktifkan" href="#" onclick="edit('<?=$data->id_pelanggan?>')">Aktifkan</a></td>
-							<?php endif ?>
+
 						</tr>
 						<?php } ?>
 						</tfoot>
@@ -187,7 +183,6 @@ input[type="radio"]:disabled + .label-text:before{
         </div>
       </div>
 
-	
 				<!-- Modal Tambah Tarif-->
 				<div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -222,20 +217,19 @@ input[type="radio"]:disabled + .label-text:before{
 								<div class="form-group">
 									<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Nomor Kwh : </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input type="text" name="nomor_kwh" required="required" class="form-control col-md-7 col-xs-12">
+										<input type="number" name="nomor_kwh" required="required" class="form-control col-md-7 col-xs-12">
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Jenis Tarif : </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select  class="form-control col-md-7 col-xs-12" name="id_tarif" required="required">
-                                        <option>Pilih Tarif</option>
-                                        <?php foreach ($DataTarif as $data) {  ?>
-                                                        <option value="<?=$data->id_tarif?>"><?= $data->nama_tarif ?></option>
-                                        <?php } ?>
-                                    </select>
-    
+                            <select  class="form-control col-md-7 col-xs-12" name="id_tarif" required="required">
+                                <option>Pilih Tarif</option>
+                                  <?php foreach ($DataTarif as $data) {  ?>
+                                      <option value="<?=$data->id_tarif?>"><?= $data->nama_tarif ?></option>
+                                  <?php } ?>
+                            </select>
 									</div>
 								</div>
 
@@ -246,19 +240,19 @@ input[type="radio"]:disabled + .label-text:before{
 									</div>
 								</div>
 
-                                <div class="form-group">
+                <div class="form-group">
 									<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Password : </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<input type="password" id="sp" name="password" required="required" class="form-control col-md-7 col-xs-12">
 									</div>
 								</div>
 
-                                <div class="form-group">
+                <div class="form-group">
 									<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12"></label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 									<label>
-						<input type="checkbox" name="check" type="checkbox" onclick="FPassword()"> <span class="label-text">Lihat Password</span>
-					</label>
+											<input type="checkbox" name="check" type="checkbox" onclick="FPassword()"> <span class="label-text">Lihat Password</span>
+									</label>
 									</div>
 								</div>
 
@@ -271,8 +265,8 @@ input[type="radio"]:disabled + .label-text:before{
 					</form>
 				</div>
 			  </div>
-			  
-			 <!-- Modal Edit Data Tarif-->
+
+			 <!-- Modal Edit Data Pelanggan-->
 			 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -285,15 +279,15 @@ input[type="radio"]:disabled + .label-text:before{
 						<div class="modal-body">
 							<br />
 
-							<form action="<?=base_url('admin_home/edit_tarif')?>" method="post" class="form-horizontal form-label-left">
-									
-							<input type="text" id="id_pelanggan" name="id_pelanggan" required="required" class="form-control col-md-7 col-xs-12">
+							<form action="<?=base_url('admin_home/edit_pelanggan')?>" method="post" class="form-horizontal form-label-left">
+
+							<input type="hidden" id="id_pelanggan" name="id_pelanggan" required="required" class="form-control col-md-7 col-xs-12">
 
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Pelanggan :
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input type="text" id="nama_pelanggan" name="nama_tarif" required="required" class="form-control col-md-7 col-xs-12">
+										<input type="text" id="nama_pelanggan" name="nama_pelanggan" required="required" class="form-control col-md-7 col-xs-12">
 									</div>
 								</div>
 
@@ -322,12 +316,12 @@ input[type="radio"]:disabled + .label-text:before{
 									<div class="form-group">
 									<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Jenis Tarif : </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select  class="form-control col-md-7 col-xs-12" id="id_tarif" name="id_tarif" required="required">
-                                        <option>Pilih Tarif</option>
-                                        <?php foreach ($DataTarif as $data) {  ?>
-                                                        <option value="<?=$data->id_tarif?>"><?= $data->nama_tarif ?></option>
-                                        <?php } ?>
-                                    </select>
+                    <select class="form-control col-md-7 col-xs-12" id="id_tarif" name="id_tarif" required="required">
+                        <option>Pilih Tarif</option>
+                            <?php foreach ($DataTarif as $data) { ?>
+                                  <option value="<?=$data->id_tarif?>"><?= $data->nama_tarif ?></option>
+                            <?php } ?>
+                    </select>
 									</div>
 								</div>
 
@@ -340,7 +334,86 @@ input[type="radio"]:disabled + .label-text:before{
 					</form>
 				</div>
 	 		 </div>
-						
+
+			 <!--  Konfirmasi Hapus Pelanggan -->
+			 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-hidden="true">
+									 <div class="modal-dialog" role="document">
+											 <div class="modal-content">
+											 <div class="modal-header">
+													 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													 <span aria-hidden="true">&times;</span>
+													 </button>
+													 <h3><strong>Hapus Data Pelanggan</strong></h3>
+											 </div>
+											 <div class="modal-body">
+													 <h4>Anda Yakin Ingin Menghapus Pelanggan ?</h4>
+											 </div>
+											 <form action="<?=base_url('admin_home/hapus_pelanggan')?>" method="post" class="form-horizontal form-label-left">
+
+																	 <input type="text" id="id_pelanggan1" name="id_pelanggan" required="required" class="form-control col-md-7 col-xs-12">
+
+																	 <div class="modal-footer">
+																			 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+																			 <input type="submit" value="Konfirmasi" class="btn btn-primary">
+																	 </div>
+																	 </div>
+																	 </form>
+									 </div>
+				 </div>
+
+			 <!--  Konfirmasi Aktifkan Tarif -->
+			 <div class="modal fade" id="aktifkan" tabindex="-1" role="dialog" aria-hidden="true">
+									 <div class="modal-dialog" role="document">
+											 <div class="modal-content">
+											 <div class="modal-header">
+													 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													 <span aria-hidden="true">&times;</span>
+													 </button>
+													 <h3><strong>Aktifkan Tarif</strong></h3>
+											 </div>
+											 <div class="modal-body">
+													 <h4>Anda Yakin Ingin Mengaktifkan Tarif ?</h4>
+											 </div>
+											 <form action="<?=base_url('admin_home/aktif_tarif')?>" method="post" class="form-horizontal form-label-left">
+
+																	 <input type="hidden" id="id_tarif2" name="id_tarif" required="required" class="form-control col-md-7 col-xs-12">
+
+																	 <div class="modal-footer">
+																			 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+																			 <input type="submit" value="Konfirmasi" class="btn btn-primary">
+																	 </div>
+																	 </div>
+																	 </form>
+									 </div>
+				 </div>
+
+			 <!--  Konfirmasi Non Aktifkan Tarif -->
+			 <div class="modal fade" id="nonaktifkan" tabindex="-1" role="dialog" aria-hidden="true">
+									 <div class="modal-dialog" role="document">
+											 <div class="modal-content">
+											 <div class="modal-header">
+													 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													 <span aria-hidden="true">&times;</span>
+													 </button>
+													 <h3><strong>Non-Aktifkan Tarif</strong></h3>
+											 </div>
+											 <div class="modal-body">
+													 <h4>Anda Yakin Ingin Menonaktifkan Tarif ?</h4>
+											 </div>
+											 <form action="<?=base_url('admin_home/nonaktif_tarif')?>" method="post" class="form-horizontal form-label-left">
+
+																	 <input type="hidden" id="id_tarif3" name="id_tarif" required="required" class="form-control col-md-7 col-xs-12">
+
+																	 <div class="modal-footer">
+																			 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+																			 <input type="submit" value="Konfirmasi" class="btn btn-primary">
+																	 </div>
+																	 </div>
+																	 </form>
+									 </div>
+									 </div>
+
+
 
     </div>
     <script>
@@ -361,15 +434,16 @@ input[type="radio"]:disabled + .label-text:before{
 						dataType: "json",
 						success: function (data) {
 							$("#id_pelanggan").val(data.id_pelanggan);
+							$("#id_pelanggan1").val(data.id_pelanggan);
 							$("#id_pelanggan2").val(data.id_pelanggan);
 							$("#id_pelanggan3").val(data.id_pelanggan);
-							$("#id_pelanggan4").val(data.id_pelanggan);
 							$("#nama_pelanggan").val(data.nama_pelanggan);
 							$("#username").val(data.username);
 							$("#nomor_kwh").val(data.nomor_kwh);
 							$("#alamat").val(data.alamat);
 							$("#status_pelanggan").val(data.status_pelanggan);
 							$("#nama_tarif").val(data.nama_tarif);
+							$("#id_tarif").val(data.id_tarif);
 						}
 					});
 				}

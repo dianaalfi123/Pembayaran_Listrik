@@ -13,28 +13,26 @@
 <body>
 	<div class="container-fluid">
 		<h2>
-			<center><strong>Halaman Tarif</strong></center>
+			<center><strong>Halaman Riwayat Pembayaran</strong></center>
 		</h2><br>
-		<a data-toggle="modal" data-target="#tambah" class="btn btn-primary">+ Tambah Data Tarif</a><br><br>
 
 		<div class="box">
 			<div class="box-header">
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<table id="tabletarif" class="table table-bordered table-striped">
+				<table id="tabelriwayat" class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th>Nomer</th>
+							<th>Nomor</th>
 							<th>Nomor KWH</th>
 							<th>Nama Pelanggan</th>
 							<th>Tanggal Riwayat</th>
 							<th>Bulan Bayar</th>
-							<th>Biaya Admin</th>
+							<th>Bukti</th>
 							<th>Total Bayar</th>
 							<th>Status</th>
-							<th>Bukti</th>
-							<th>Verifikasi</th>
+							<th>Pemverifikasi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -57,7 +55,7 @@
 								<?=$data->bulan_bayar ?>
 							</td>
 							<td>
-								<?=$data->biaya_admin ?>
+								<img src="<?=base_url('assets/bukti/'.$data->bukti )?>" width="60px;">
 							</td>
 							<td>
 								<?=$data->total_bayar ?>
@@ -67,9 +65,6 @@
 							</td>
 							<td>
 								<?=$data->nama_admin ?>
-							</td>
-							<td>
-								10
 							</td>
 						</tr>
 						<?php } ?>
@@ -139,7 +134,7 @@
 					</form>
 				</div>
 			  </div>
-			  
+
 			  <!-- Modal Edit Data Tarif-->
 			<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -154,7 +149,7 @@
 							<br />
 
 							<form action="<?=base_url('admin_home/edit_tarif')?>" method="post" class="form-horizontal form-label-left">
-									
+
 							<input type="hidden" id="id_tarif4" name="id_tarif" required="required" class="form-control col-md-7 col-xs-12">
 
 								<div class="form-group">
@@ -203,7 +198,7 @@
 					</form>
 				</div>
 	 		 </div>
-						
+
 				<!--  Konfirmasi Hapus Tarif -->
 				<div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -218,9 +213,9 @@
                             <h4>Anda Yakin Ingin Menghapus Tarif ?</h4>
                         </div>
                         <form action="<?=base_url('admin_home/hapus_tarif')?>" method="post" class="form-horizontal form-label-left">
-                                    
+
                                     <input type="hidden" id="id_tarif" name="id_tarif" required="required" class="form-control col-md-7 col-xs-12">
-            
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                         <input type="submit" value="Konfirmasi" class="btn btn-primary">
@@ -229,7 +224,7 @@
                                     </form>
                     </div>
 					</div>
-			
+
 				<!--  Konfirmasi Aktifkan Tarif -->
 				<div class="modal fade" id="aktifkan" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -244,9 +239,9 @@
                             <h4>Anda Yakin Ingin Mengaktifkan Tarif ?</h4>
                         </div>
                         <form action="<?=base_url('admin_home/aktif_tarif')?>" method="post" class="form-horizontal form-label-left">
-                                    
+
                                     <input type="hidden" id="id_tarif2" name="id_tarif" required="required" class="form-control col-md-7 col-xs-12">
-            
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                         <input type="submit" value="Konfirmasi" class="btn btn-primary">
@@ -270,9 +265,9 @@
                             <h4>Anda Yakin Ingin Menonaktifkan Tarif ?</h4>
                         </div>
                         <form action="<?=base_url('admin_home/nonaktif_tarif')?>" method="post" class="form-horizontal form-label-left">
-                                    
+
                                     <input type="hidden" id="id_tarif3" name="id_tarif" required="required" class="form-control col-md-7 col-xs-12">
-            
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                         <input type="submit" value="Konfirmasi" class="btn btn-primary">
@@ -303,6 +298,7 @@
 						}
 					});
 				}
+
 			</script>
 </body>
 

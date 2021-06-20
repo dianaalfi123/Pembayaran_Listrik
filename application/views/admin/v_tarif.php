@@ -46,15 +46,15 @@
 								<?=$data->nama_tarif ?>
 							</td>
 							<td>
-								<?=$data->daya ?> VA</td>
-							<td>Rp
-								<?=number_format($data->terperkwh,2,',','.') ?>
+								<?=$data->daya ?></td>
+							<td>
+								<?= $data->terperkwh ?>
 							</td>
-							<td>Rp
-								<?=number_format($data->beban,2,',','.') ?>
+							<td>
+								<?=$data->beban ?>
 							</td>
-							<td>Rp
-								<?=number_format($data->denda,2,',','.') ?>
+							<td>
+								<?=$data->denda ?>
 							</td>
 							<td>
 								<a class="btn btn-primary" data-toggle="modal" data-target="#edit" href="#" onclick="edit('<?=$data->id_tarif?>')">Edit</a>

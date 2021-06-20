@@ -11,122 +11,11 @@
 </head>
 
 <body>
-<style>
-    
-input[type="checkbox"], input[type="radio"]{
-  position: absolute;
-  right: 9000px;
-}
 
-/*Check box*/
-input[type="checkbox"] + .label-text:before{
-  content: "\f096";
-  font-family: "FontAwesome";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing:antialiased;
-  width: 1em;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-input[type="checkbox"]:checked + .label-text:before{
-  content: "\f14a";
-  color: #2980b9;
-  animation: effect 250ms ease-in;
-}
-
-input[type="checkbox"]:disabled + .label-text{
-  color: #aaa;
-}
-
-input[type="checkbox"]:disabled + .label-text:before{
-  content: "\f0c8";
-  color: #ccc;
-}
-
-/*Radio box*/
-
-input[type="radio"] + .label-text:before{
-  content: "\f10c";
-  font-family: "FontAwesome";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing:antialiased;
-  width: 1em;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-input[type="radio"]:checked + .label-text:before{
-  content: "\f192";
-  color: #8e44ad;
-  animation: effect 250ms ease-in;
-}
-
-input[type="radio"]:disabled + .label-text{
-  color: #aaa;
-}
-
-input[type="radio"]:disabled + .label-text:before{
-  content: "\f111";
-  color: #ccc;
-}
-
-/*Radio Toggle*/
-
-.toggle input[type="radio"] + .label-text:before{
-  content: "\f204";
-  font-family: "FontAwesome";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing:antialiased;
-  width: 1em;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.toggle input[type="radio"]:checked + .label-text:before{
-  content: "\f205";
-  color: #16a085;
-  animation: effect 250ms ease-in;
-}
-
-.toggle input[type="radio"]:disabled + .label-text{
-  color: #aaa;
-}
-
-.toggle input[type="radio"]:disabled + .label-text:before{
-  content: "\f204";
-  color: #ccc;
-}
-
-
-@keyframes effect{
-  0%{transform: scale(0);}
-  25%{transform: scale(1.3);}
-  75%{transform: scale(1.4);}
-  100%{transform: scale(1);}
-}
-</style>
   <div class="container-fluid">
     <h2>
       <center><strong>Halaman Data Tagihan</strong></center>
-    </h2><br>
-    <a data-toggle="modal" data-target="#tambah" class="btn btn-primary">+ Tambah Data Tagihan</a><br><br>
-
+    </h2><br />
     <div class="box">
       <div class="box-header">
       </div>
@@ -136,9 +25,8 @@ input[type="radio"]:disabled + .label-text:before{
         <table id="tabletarif" class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Id Tagihan</th>
-              <th>Id Penggunaan</th>
-              <th>Bukan</th>
+              <th>Nomor</th>
+              <th>Bulan</th>
               <th>Tahun</th>
               <th>Jumlah Meter</th>
               <th>Status</th>
@@ -150,26 +38,23 @@ input[type="radio"]:disabled + .label-text:before{
             <?php $no=1; foreach ($DataTagihan as $data) {  ?>
             <tr>
               <td>
-                <?=$data->id_tagihan  ?>
+                <?=$no++  ?>
               </td>
               <td>
-                <?=$data->id_penggunaan ?>
+                <?=$data->bulan ?>
               </td>
               <td>
-                <?=$data->bulan ?> 
+                <?=$data->tahun?>
               </td>
               <td>
-                <?=$data->tahun?> 
+                <?=$data->jumlah_meter?>
               </td>
               <td>
-                <?=$data->jumlah_meter?> 
+                <?=$data->status?>
               </td>
               <td>
-                <?=$data->status?>  
+                <a class="btn btn-danger" data-toggle="modal" data-target="#hapus" href="#" onclick="edit('<?=$data->id_tagihan?>')">Hapus</a></td>
               </td>
-              <td>
-                <a class="btn btn-primary" data-toggle="modal" data-target="#edit" href="#" onclick="edit('<?=$data->id_pelanggan?>')"> <?=$data->id_tagihan?> Edit</a>
-                <a class="btn btn-danger" data-toggle="modal" data-target="#hapus" href="#" onclick="edit('<?=$data->id_pelanggan?>')">Hapus</a></td>
             </tr>
             <?php } ?>
             </tfoot>
@@ -177,7 +62,7 @@ input[type="radio"]:disabled + .label-text:before{
         </div>
       </div>
 
-  
+
         <!-- Modal Tambah Tarif-->
         <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -239,7 +124,7 @@ input[type="radio"]:disabled + .label-text:before{
           </form>
         </div>
         </div>
-        
+
        <!-- Modal Edit Data Tarif-->
        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -301,7 +186,7 @@ input[type="radio"]:disabled + .label-text:before{
           </form>
         </div>
        </div>
-            
+
 
     </div>
     <script>
@@ -326,7 +211,7 @@ input[type="radio"]:disabled + .label-text:before{
               $("#bulan").val(data.bulan);
               $("#tahun").val(data.tahun);
               $("#jumlah_meter").val(data.jumlah_meter);
-              $("#status").val(data.status);  
+              $("#status").val(data.status);
             }
           });
         }

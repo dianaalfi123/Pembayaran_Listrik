@@ -42,7 +42,7 @@
       </div>
 
       <div class="form-group has-feedback">
-        <input type="text" name="nomor_kwh" class="form-control" placeholder="Nomor Kwh">
+        <input type="number" name="nomor_kwh" class="form-control" placeholder="Nomor Kwh">
         <span class="glyphicon glyphicon-certificate form-control-feedback"></span>
       </div>
 
@@ -55,9 +55,20 @@
         <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-        <!-- <input type="hidden" value="0" name="id_tarif" class="form-control"> -->
+
+      <div class="form-group has-feedback">
+         <select  class="form-control"  name="id_tarif" required="required">
+            <option>Pilih Tarif</option>
+                <?php foreach ($DataTarif as $data) { ?>
+                    <option value="<?=$data->id_tarif?>"><?= $data->nama_tarif ?></option>
+                <?php } ?>
+          </select>
+
+      </div>
+
+
       <div class="row">
-       
+
         <!-- /.col -->
         <div class="col-xs-12">
           <input name="submit" id="submit" type="submit" class="btn btn-primary btn-block btn-flat" value="Daftar">

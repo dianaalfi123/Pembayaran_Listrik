@@ -28,6 +28,121 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
+
+  <style>
+  .label-text{
+    font-size: 14px;
+  }
+
+  input[type="checkbox"], input[type="radio"]{
+  	position: absolute;
+  	right: 9000px;
+  }
+
+  /*Check box*/
+  input[type="checkbox"] + .label-text:before{
+  	content: "\f096";
+  	font-family: "FontAwesome";
+  	speak: none;
+  	font-style: normal;
+  	font-weight: normal;
+  	font-variant: normal;
+  	text-transform: none;
+  	line-height: 1;
+  	-webkit-font-smoothing:antialiased;
+  	width: 1em;
+  	display: inline-block;
+  	margin-right: 5px;
+  }
+
+  input[type="checkbox"]:checked + .label-text:before{
+  	content: "\f14a";
+  	color: #2980b9;
+  	animation: effect 250ms ease-in;
+  }
+
+  input[type="checkbox"]:disabled + .label-text{
+  	color: #aaa;
+  }
+
+  input[type="checkbox"]:disabled + .label-text:before{
+  	content: "\f0c8";
+  	color: #ccc;
+  }
+
+  /*Radio box*/
+
+  input[type="radio"] + .label-text:before{
+  	content: "\f10c";
+  	font-family: "FontAwesome";
+  	speak: none;
+  	font-style: normal;
+  	font-weight: normal;
+  	font-variant: normal;
+  	text-transform: none;
+  	line-height: 1;
+  	-webkit-font-smoothing:antialiased;
+  	width: 1em;
+  	display: inline-block;
+  	margin-right: 5px;
+  }
+
+  input[type="radio"]:checked + .label-text:before{
+  	content: "\f192";
+  	color: #8e44ad;
+  	animation: effect 250ms ease-in;
+  }
+
+  input[type="radio"]:disabled + .label-text{
+  	color: #aaa;
+  }
+
+  input[type="radio"]:disabled + .label-text:before{
+  	content: "\f111";
+  	color: #ccc;
+  }
+
+  /*Radio Toggle*/
+
+  .toggle input[type="radio"] + .label-text:before{
+  	content: "\f204";
+  	font-family: "FontAwesome";
+  	speak: none;
+  	font-style: normal;
+  	font-weight: normal;
+  	font-variant: normal;
+  	text-transform: none;
+  	line-height: 1;
+  	-webkit-font-smoothing:antialiased;
+  	width: 1em;
+  	display: inline-block;
+  	margin-right: 10px;
+  }
+
+  .toggle input[type="radio"]:checked + .label-text:before{
+  	content: "\f205";
+  	color: #16a085;
+  	animation: effect 250ms ease-in;
+  }
+
+  .toggle input[type="radio"]:disabled + .label-text{
+  	color: #aaa;
+  }
+
+  .toggle input[type="radio"]:disabled + .label-text:before{
+  	content: "\f204";
+  	color: #ccc;
+  }
+
+
+  @keyframes effect{
+  	0%{transform: scale(0);}
+  	25%{transform: scale(1.3);}
+  	75%{transform: scale(1.4);}
+  	100%{transform: scale(1);}
+  }
+  </style>
+
 <div class="login-box">
   <div class="login-logo">
     <a href="<?=base_url()?>home/login"><b>Pembayaran</b> Listrik</a>
@@ -35,17 +150,26 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Login Untuk Melanjutkan</p>
-
+      <center>
+        <font color="red" size="3"><b><?= $this->session->flashdata('pesan_gagal'); ?></font>
+          <font color="green" size="3"><?= $this->session->flashdata('pesan_sukses'); ?></font></b></center><br />
     <form action="<?=base_url('user/proses_login')?>" method="post">
       <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="Password">
+      <input placeholder="Password" type="password" id="sp" name="password" required="required" class="form-control">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
+
+        <label>
+            <input type="checkbox" name="check" type="checkbox" onclick="FPassword()"> <span class="label-text">Lihat Password</span>
+        </label><br /><br />
+
       <div class="row">
+
         <!-- /.col -->
         <div class="col-xs-12">
           <input name="submit" id="submit "type="submit" class="btn btn-primary btn-block btn-flat" value="Masuk">
@@ -61,22 +185,21 @@
   </div>
   <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
+<script>
+  function FPassword() {
+    var x = document.getElementById("sp");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+  }
+</script>
 
 <!-- jQuery 3 -->
 <script src="<?=base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?=base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="<?=base_url()?>assets/plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
+
 </body>
 </html>
